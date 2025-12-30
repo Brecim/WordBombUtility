@@ -7,17 +7,22 @@ import java.util.Scanner;
 
 public class GUI extends JFrame {
     private JPanel mainPn;
-    private JTextField promptField;
+    public JTextField promptField;
     private JButton findBtn;
     private JTextPane resultPane;
     private JComboBox wordLengthBox;
+    private JButton savedWordsBtn;
+    private JButton bookmarkBtn;
 
     public ArrayList<String> dict = new ArrayList<>();
     private int length = 1000;
 
+    private final BookmarkMenu bm = new BookmarkMenu(this);
+    private final SavedWordsMenu swm = new SavedWordsMenu();
+
     public GUI() {
         setContentPane(mainPn);
-        setTitle("Prompt Finder");
+        setTitle("Word Bomb Utility");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(500, 500));
         pack();
@@ -31,13 +36,14 @@ public class GUI extends JFrame {
         wordLengthBox.addItem(15);
         wordLengthBox.addItem(20);
         wordLengthBox.addItem("Max");
-        wordLengthBox.setSelectedItem(wordLengthBox.getItemCount());
 
         findBtn.addActionListener(_ -> find(promptField.getText()));
         // Jiz snima klavesy vcetne Enteru
         promptField.addActionListener(_ -> find(promptField.getText()));
         // Automaticky bere prednost pri spusteni aplikace
         promptField.requestFocus();
+        bookmarkBtn.addActionListener(_ -> bookmarkMenu());
+        savedWordsBtn.addActionListener(_ -> swm.setVisible(true));
     }
 
     private void checkLength() {
@@ -47,7 +53,7 @@ public class GUI extends JFrame {
             case "15" -> length = 15;
             case "20" -> length = 20;
             case "Max" -> length = 1000;
-            case null -> {}
+            case null -> length = 1000;
             default -> throw new IllegalStateException("Unexpected value: " + selectedLength);
         }
     }
@@ -93,6 +99,15 @@ public class GUI extends JFrame {
 
         resultPane.setContentType("text/html");
         resultPane.setText(htmlContent.toString());
+    }
+
+    private void bookmarkMenu() {
+        bm.promptField.setText(promptField.getText());
+        bm.setVisible(true);
+    }
+
+    private void savedWordsMenu() {
+
     }
 
     void main() {
