@@ -29,6 +29,7 @@ public class SavedWordsMenu extends JFrame {
 
     public void loadList() {
         try {
+            promptBox.removeAllItems();
             Scanner sp = new Scanner(new FileReader("savedPrompts.txt"));
             Scanner sw = new Scanner(new FileReader("savedWords.txt"));
             sp.useDelimiter(";");
@@ -39,8 +40,6 @@ public class SavedWordsMenu extends JFrame {
             }
             sp.close();
             sw.close();
-            System.out.println(promptList);
-            System.out.println(wordList);
 
             // Create a temporary list to hold only the unique items
             ArrayList<String> uniquePrompts = new ArrayList<>();
