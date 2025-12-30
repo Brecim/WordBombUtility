@@ -11,17 +11,6 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="9c91" class="javax.swing.JTextField" binding="searchField">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <background color="-14013651"/>
-          <foreground color="-1"/>
-        </properties>
-      </component>
       <component id="c3f20" class="javax.swing.JTextPane" binding="resultPane">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -54,7 +43,7 @@
         <properties>
           <background color="-14013651"/>
           <foreground color="-1"/>
-          <text value="Enter Prompt:"/>
+          <text value="Select Prompt:"/>
         </properties>
       </component>
       <component id="fdebb" class="javax.swing.JButton" binding="searchBtn">
@@ -65,6 +54,15 @@
           <background color="-14013651"/>
           <foreground color="-1"/>
           <text value="Search"/>
+        </properties>
+      </component>
+      <component id="20a10" class="javax.swing.JComboBox" binding="promptBox">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14013651"/>
+          <foreground color="-1"/>
         </properties>
       </component>
     </children>

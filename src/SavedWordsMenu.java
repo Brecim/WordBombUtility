@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class SavedWordsMenu extends JFrame {
 
     private JPanel mainPn;
-    private JTextField searchField;
     private JTextPane resultPane;
     private JButton searchBtn;
+    private JComboBox promptBox;
 
     private final ArrayList<String> promptList = new ArrayList<>();
     private final ArrayList<String> wordList = new ArrayList<>();
@@ -23,7 +23,8 @@ public class SavedWordsMenu extends JFrame {
         pack();
 
         loadList();
-        searchBtn.addActionListener(_ -> search(searchField.getText()));
+        searchBtn.addActionListener(_ -> search((String) promptBox.getSelectedItem()));
+        promptBox.addActionListener(_ -> search((String) promptBox.getSelectedItem()));
     }
 
     private void loadList() {
@@ -40,6 +41,18 @@ public class SavedWordsMenu extends JFrame {
             sw.close();
             System.out.println(promptList);
             System.out.println(wordList);
+
+            // Create a temporary list to hold only the unique items
+            ArrayList<String> uniquePrompts = new ArrayList<>();
+
+            for (String prompt : promptList) {
+                // If the temporary list does NOT already contain this prompt, add it
+                if (!uniquePrompts.contains(prompt)) {
+                    uniquePrompts.add(prompt);
+                    // Only add to the ComboBox if it's unique
+                    promptBox.addItem(prompt);
+                }
+            }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

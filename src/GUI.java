@@ -103,11 +103,9 @@ public class GUI extends JFrame {
 
     private void bookmarkMenu() {
         bm.promptField.setText(promptField.getText());
+        bm.wordField.setText("");
         bm.setVisible(true);
-    }
-
-    private void savedWordsMenu() {
-
+        bm.promptField.requestFocus();
     }
 
     void main() {

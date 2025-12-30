@@ -25,6 +25,9 @@ public class BookmarkMenu extends JFrame {
         cancelBtn.addActionListener(_ -> setVisible(false));
         saveBtn.addActionListener(_ -> saveWord());
         clearBtn.addActionListener(_ -> clearBookmarks());
+
+        promptField.addActionListener(_ -> wordField.requestFocus());
+        wordField.addActionListener(_ -> saveWord());
     }
 
     private void saveWord() {
@@ -57,6 +60,7 @@ public class BookmarkMenu extends JFrame {
                 wordBW.close();
                 JOptionPane.showMessageDialog(this, "Saved! :D\nPrompt: " + prompt + "\nWord: " + word);
             }
+            promptField.requestFocus();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
