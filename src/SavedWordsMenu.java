@@ -27,7 +27,7 @@ public class SavedWordsMenu extends JFrame {
         promptBox.addActionListener(_ -> search((String) promptBox.getSelectedItem()));
     }
 
-    private void loadList() {
+    public void loadList() {
         try {
             Scanner sp = new Scanner(new FileReader("savedPrompts.txt"));
             Scanner sw = new Scanner(new FileReader("savedWords.txt"));

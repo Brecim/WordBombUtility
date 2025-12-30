@@ -60,6 +60,8 @@ public class BookmarkMenu extends JFrame {
                 wordBW.close();
                 JOptionPane.showMessageDialog(this, "Saved! :D\nPrompt: " + prompt + "\nWord: " + word);
             }
+
+            menu.swm.loadList();
             promptField.requestFocus();
         } catch (IOException e) {
             throw new RuntimeException(e);

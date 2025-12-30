@@ -18,7 +18,7 @@ public class GUI extends JFrame {
     private int length = 1000;
 
     private final BookmarkMenu bm = new BookmarkMenu(this);
-    private final SavedWordsMenu swm = new SavedWordsMenu();
+    public final SavedWordsMenu swm = new SavedWordsMenu();
 
     public GUI() {
         setContentPane(mainPn);
