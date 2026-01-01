@@ -11,11 +11,15 @@ public class SavedWordsMenu extends JFrame {
     private JTextPane resultPane;
     private JButton searchBtn;
     private JComboBox promptBox;
+    private JButton bookmarkBtn;
 
     private final ArrayList<String> promptList = new ArrayList<>();
-    private final ArrayList<String> wordList = new ArrayList<>();
+    public final ArrayList<String> wordList = new ArrayList<>();
 
-    public SavedWordsMenu() {
+    private final GUI menu;
+
+    public SavedWordsMenu(GUI menu) {
+        this.menu = menu;
         setContentPane(mainPn);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Saved Words");
@@ -24,6 +28,7 @@ public class SavedWordsMenu extends JFrame {
 
         loadList();
         searchBtn.addActionListener(_ -> search((String) promptBox.getSelectedItem()));
+        bookmarkBtn.addActionListener(_ -> bookmarkMenu());
         promptBox.addActionListener(_ -> search((String) promptBox.getSelectedItem()));
     }
 
@@ -55,6 +60,11 @@ public class SavedWordsMenu extends JFrame {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void bookmarkMenu() {
+        menu.bm.promptField.setText(promptBox.getSelectedItem().toString());
+        menu.bm.setVisible(true);
     }
 
     private void search(String prompt) {

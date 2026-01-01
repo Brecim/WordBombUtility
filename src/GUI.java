@@ -17,8 +17,8 @@ public class GUI extends JFrame {
     public ArrayList<String> dict = new ArrayList<>();
     private int length = 1000;
 
-    private final BookmarkMenu bm = new BookmarkMenu(this);
-    public final SavedWordsMenu swm = new SavedWordsMenu();
+    public final BookmarkMenu bm = new BookmarkMenu(this);
+    public final SavedWordsMenu swm = new SavedWordsMenu(this);
 
     public GUI() {
         setContentPane(mainPn);

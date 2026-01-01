@@ -86,12 +86,22 @@
       </component>
       <component id="1eeb2" class="javax.swing.JButton" binding="clearBtn">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-14013651"/>
           <foreground color="-1"/>
           <text value="Clear Bookmarks"/>
+        </properties>
+      </component>
+      <component id="14283" class="javax.swing.JButton" binding="savedWordsBtn">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14013651"/>
+          <foreground color="-1"/>
+          <text value="Saved Words"/>
         </properties>
       </component>
     </children>
