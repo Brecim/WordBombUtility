@@ -1,40 +1,27 @@
 import javax.swing.*;
-import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class SavedWordsMenu extends JFrame {
-
-    private JPanel mainPn;
-    private JTextPane resultPane;
-    private JButton searchBtn;
-    private JComboBox promptBox;
-    private JButton bookmarkBtn;
+public class SavedWordsLogic {
 
     private final ArrayList<String> promptList = new ArrayList<>();
     public final ArrayList<String> wordList = new ArrayList<>();
 
     private final GUI menu;
 
-    public SavedWordsMenu(GUI menu) {
+    public SavedWordsLogic(GUI menu) {
         this.menu = menu;
-        setContentPane(mainPn);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setTitle("Saved Words");
-        setPreferredSize(new Dimension(500,500));
-        pack();
 
         loadList();
-        searchBtn.addActionListener(_ -> search((String) promptBox.getSelectedItem()));
-        bookmarkBtn.addActionListener(_ -> bookmarkMenu());
-        promptBox.addActionListener(_ -> search((String) promptBox.getSelectedItem()));
+        menu.searchSavedWordsBtn.addActionListener(_ -> search((String) menu.promptBox.getSelectedItem()));
+        menu.promptBox.addActionListener(_ -> search((String) menu.promptBox.getSelectedItem()));
     }
 
     public void loadList() {
         try {
-            promptBox.removeAllItems();
+            menu.promptBox.removeAllItems();
             Scanner sp = new Scanner(new FileReader("savedPrompts.txt"));
             Scanner sw = new Scanner(new FileReader("savedWords.txt"));
             sp.useDelimiter(";");
@@ -54,7 +41,7 @@ public class SavedWordsMenu extends JFrame {
                 if (!uniquePrompts.contains(prompt)) {
                     uniquePrompts.add(prompt);
                     // Only add to the ComboBox if it's unique
-                    promptBox.addItem(prompt);
+                    menu.promptBox.addItem(prompt);
                 }
             }
         } catch (FileNotFoundException e) {
@@ -62,13 +49,8 @@ public class SavedWordsMenu extends JFrame {
         }
     }
 
-    private void bookmarkMenu() {
-        menu.bm.promptField.setText(promptBox.getSelectedItem().toString());
-        menu.bm.setVisible(true);
-    }
-
     private void search(String prompt) {
-        resultPane.setText("");
+        menu.savesPane.setText("");
 
         // Create a temporary list for results. Do not use the class 'wordList'.
         ArrayList<String> foundWords = new ArrayList<>();
@@ -105,7 +87,7 @@ public class SavedWordsMenu extends JFrame {
 
         htmlContent.append("</body></html>");
 
-        resultPane.setContentType("text/html");
-        resultPane.setText(htmlContent.toString());
+        menu.savesPane.setContentType("text/html");
+        menu.savesPane.setText(htmlContent.toString());
     }
 }

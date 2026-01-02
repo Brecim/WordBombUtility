@@ -11,20 +11,25 @@ public class GUI extends JFrame {
     private JButton findBtn;
     private JTextPane resultPane;
     private JComboBox wordLengthBox;
-    private JButton savedWordsBtn;
     private JButton bookmarkBtn;
+    public JComboBox promptBox;
+    public JButton searchSavedWordsBtn;
+    public JTextPane savesPane;
+    public JButton clearBookmarkBtn;
+    public JTextField bookmarkPromptField;
+    public JTextField bookmarkWordField;
 
     public ArrayList<String> dict = new ArrayList<>();
     private int length = 1000;
 
-    public final BookmarkMenu bm = new BookmarkMenu(this);
-    public final SavedWordsMenu swm = new SavedWordsMenu(this);
+    public final BookmarkLogic bl = new BookmarkLogic(this);
+    public final SavedWordsLogic swl = new SavedWordsLogic(this);
 
     public GUI() {
         setContentPane(mainPn);
         setTitle("Word Bomb Utility");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(500, 500));
+        setPreferredSize(new Dimension(1000, 600));
         pack();
 
         loadDict();
@@ -40,10 +45,11 @@ public class GUI extends JFrame {
         findBtn.addActionListener(_ -> find(promptField.getText()));
         // Jiz snima klavesy vcetne Enteru
         promptField.addActionListener(_ -> find(promptField.getText()));
+        wordLengthBox.addActionListener(_ -> find(promptField.getText()));
         // Automaticky bere prednost pri spusteni aplikace
         promptField.requestFocus();
-        bookmarkBtn.addActionListener(_ -> bookmarkMenu());
-        savedWordsBtn.addActionListener(_ -> swm.setVisible(true));
+        bookmarkBtn.addActionListener(_ -> bl.saveWord());
+        //savedWordsBtn.addActionListener(_ -> swm.setVisible(true));
     }
 
     private void checkLength() {
@@ -74,8 +80,10 @@ public class GUI extends JFrame {
         int found = 0;
         ArrayList<String> list = new ArrayList<>();
         checkLength();
-
         resultPane.setText("");
+        // auto nastaveni promptu
+        bookmarkPromptField.setText(prompt);
+
         for (int i = dict.size() - 1; i >= 0; i--) {
             if (dict.get(i).contains(prompt) && dict.get(i).length() <= length) {
                 list.add(dict.get(i));
@@ -99,13 +107,6 @@ public class GUI extends JFrame {
 
         resultPane.setContentType("text/html");
         resultPane.setText(htmlContent.toString());
-    }
-
-    private void bookmarkMenu() {
-        bm.promptField.setText(promptField.getText());
-        bm.wordField.setText("");
-        bm.setVisible(true);
-        bm.promptField.requestFocus();
     }
 
     void main() {
