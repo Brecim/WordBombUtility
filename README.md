@@ -12,6 +12,7 @@ If there are any concerns, please contact me in the Issues tab in this repositor
 
 ## Requirements
 - A modern Java JRE
+
 _Proper OS packages will be introduced in later versions._
 
 ## OS Support
