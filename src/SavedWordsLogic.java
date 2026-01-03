@@ -1,6 +1,5 @@
 import javax.swing.*;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,8 +12,6 @@ public class SavedWordsLogic {
 
     public SavedWordsLogic(GUI menu) {
         this.menu = menu;
-
-        loadList();
         menu.searchSavedWordsBtn.addActionListener(_ -> search((String) menu.promptBox.getSelectedItem()));
         menu.promptBox.addActionListener(_ -> search((String) menu.promptBox.getSelectedItem()));
     }
@@ -22,8 +19,8 @@ public class SavedWordsLogic {
     public void loadList() {
         try {
             menu.promptBox.removeAllItems();
-            Scanner sp = new Scanner(new FileReader("savedPrompts.txt"));
-            Scanner sw = new Scanner(new FileReader("savedWords.txt"));
+            Scanner sp = new Scanner(new FileReader(menu.promptFile));
+            Scanner sw = new Scanner(new FileReader(menu.wordFile));
             sp.useDelimiter(";");
             sw.useDelimiter(";");
             while (sp.hasNext() && sw.hasNext()) {
@@ -45,7 +42,7 @@ public class SavedWordsLogic {
                 }
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            JOptionPane.showMessageDialog(menu, "An error has occured: " + e);
         }
     }
 
@@ -55,24 +52,26 @@ public class SavedWordsLogic {
         // Create a temporary list for results. Do not use the class 'wordList'.
         ArrayList<String> foundWords = new ArrayList<>();
 
+        // DEBUG SEARCH, FROM TEXT FILES
         try {
-            Scanner sp = new Scanner(new FileReader("savedPrompts.txt"));
-            Scanner sw = new Scanner(new FileReader("savedWords.txt"));
+            Scanner sp = new Scanner(menu.promptFile);
+            Scanner sw = new Scanner(menu.wordFile);
             sp.useDelimiter(";");
             sw.useDelimiter(";");
+
             while (sp.hasNext() && sw.hasNext()) {
-                String filePrompt = sp.next();
+                String tempPrompt = sp.next();
                 if (sw.hasNext()) {
-                    String fileWord = sw.next();
-                    if (filePrompt.equals(prompt)) {
-                        foundWords.add(fileWord);
+                    String tempWord = sw.next();
+                    if (tempPrompt.equals(prompt)) {
+                        foundWords.add(tempWord);
                     }
                 }
             }
             sp.close();
             sw.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(menu, "An error has occured: " + e);
         }
 
         // AI formatovani, jupiiiii

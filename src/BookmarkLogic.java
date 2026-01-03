@@ -17,8 +17,6 @@ public class BookmarkLogic {
     public void saveWord() {
         String prompt = menu.bookmarkPromptField.getText();
         String word = menu.bookmarkWordField.getText();
-        File promptFile = new File("savedPrompts.txt");
-        File wordFile = new File("savedWords.txt");
 
         try {
             if (prompt.isEmpty() || word.isEmpty()) {
@@ -29,19 +27,19 @@ public class BookmarkLogic {
                 JOptionPane.showMessageDialog(menu, "Your word is not in the Word Bomb dictionary. Not saving.");
             } else if (menu.swl.wordList.contains(word)) {
                 JOptionPane.showMessageDialog(menu, "Your word is already bookmarked. Not saving.");
-            } else if (promptFile.exists() && !promptFile.isDirectory() && wordFile.exists() && !wordFile.isDirectory()) {
-                BufferedWriter promptBW = new BufferedWriter(new FileWriter(promptFile, true));
+            } else if (menu.promptFile.exists() && !menu.promptFile.isDirectory() && menu.wordFile.exists() && !menu.wordFile.isDirectory()) {
+                BufferedWriter promptBW = new BufferedWriter(new FileWriter(menu.promptFile, true));
                 promptBW.write(prompt + ";");
                 promptBW.close();
-                BufferedWriter wordBW = new BufferedWriter(new FileWriter(wordFile, true));
+                BufferedWriter wordBW = new BufferedWriter(new FileWriter(menu.wordFile, true));
                 wordBW.write(word + ";");
                 wordBW.close();
                 JOptionPane.showMessageDialog(menu, "Saved! :D\nPrompt: " + prompt + "\nWord: " + word);
             } else {
-                BufferedWriter promptBW = new BufferedWriter(new FileWriter(promptFile, StandardCharsets.UTF_8));
+                BufferedWriter promptBW = new BufferedWriter(new FileWriter(menu.promptFile, StandardCharsets.UTF_8));
                 promptBW.write(prompt + ";");
                 promptBW.close();
-                BufferedWriter wordBW = new BufferedWriter(new FileWriter(wordFile, StandardCharsets.UTF_8));
+                BufferedWriter wordBW = new BufferedWriter(new FileWriter(menu.wordFile, StandardCharsets.UTF_8));
                 wordBW.write(word + ";");
                 wordBW.close();
                 JOptionPane.showMessageDialog(menu, "Saved! :D\nPrompt: " + prompt + "\nWord: " + word);
@@ -51,14 +49,15 @@ public class BookmarkLogic {
             menu.bookmarkWordField.setText("");
             menu.bookmarkPromptField.requestFocus();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            JOptionPane.showMessageDialog(menu, "An error has occured: " + e);
+            System.exit(69);
         }
     }
 
     public void clearBookmarks() {
         try {
-            PrintWriter pws = new PrintWriter("savedWords.txt", StandardCharsets.UTF_8);
-            PrintWriter pwp = new PrintWriter("savedPrompts.txt", StandardCharsets.UTF_8);
+            PrintWriter pws = new PrintWriter(menu.wordFile, StandardCharsets.UTF_8);
+            PrintWriter pwp = new PrintWriter(menu.promptFile, StandardCharsets.UTF_8);
             pws.write("");
             pwp.write("");
             pws.close();
@@ -67,7 +66,8 @@ public class BookmarkLogic {
             menu.savesPane.setText("Please save a word first!");
             JOptionPane.showMessageDialog(menu, "Bookmarks have been cleared.");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            JOptionPane.showMessageDialog(menu, "An error has occured: " + e);
+            System.exit(69);
         }
 
     }
