@@ -10,12 +10,16 @@ This app does not auto-type words, allow copying words in the game or any other 
 
 If there are any concerns, please contact me in the Issues tab in this repository.
 
+## OS Support
+
+
+
 ## Features
-- **Prompt searching with highlighting**
+- **Prompt Searching With Highlighting**
 
 ![Image](Images/searchScrn.png)
 
-- **Word length filtering**
+- **Word Length Filtering**
 
 ![Image](Images/lengthScrn.png)
 
@@ -23,12 +27,12 @@ If there are any concerns, please contact me in the Issues tab in this repositor
 
 ![Image](Images/bookmarkScrn.png)
 
-- **Dark mode GUI**
+- **Dark Mode GUI**
 
 ![Image](Images/wholeScrn.png)
 
 ## Known Issues
-*Currently, no issues. If there are any, then please feel free to make an issue in this repository.*
+*Currently, no issues. If there are any, then please feel free to make an issue in this repository. Feature requests are also welcome, but there is no guarantee of addition.*
 
 ## Special Thanks
 Thanks to [OMG](https://www.roblox.com/communities/4585943) for developing the game and providing me with silly word fun.
