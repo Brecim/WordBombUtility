@@ -41,9 +41,9 @@ public class GUI extends JFrame {
         setTitle("Word Bomb Utility");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(1000, 600));
-        setLocationRelativeTo(null);
-
         pack();
+
+        setLocationRelativeTo(null);
 
         loadDict();
         init();
