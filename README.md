@@ -42,7 +42,7 @@ Any reports about your experiences in an untested OS are very appreciated. <3
 *Currently, no issues. If there are any, then please feel free to make an issue in this repository. Feature requests are also welcome, but there is no guarantee of addition.*
 
 ## Special Thanks
-Thanks to [OMG](https://www.roblox.com/communities/4585943) for developing the game and providing me with silly word fun.
+Thanks to [OMG](https://www.roblox.com/communities/4585943) for developing the game and providing us with silly word fun.
 
 I would also like to thank [artzified](https://github.com/artzified) for compiling [a nearly complete dictionary](https://github.com/Artzified/WordBombDictionary) for this game and allowing this tool to be possible.
 
