@@ -12,7 +12,12 @@ If there are any concerns, please contact me in the Issues tab in this repositor
 
 ## OS Support
 
-
+- Windows 10, 11
+  - [X] _Tested under Windows 10_
+- MacOS
+  - [ ] Untested
+- Linux
+  - [ ] Untested
 
 ## Features
 - **Prompt Searching With Highlighting**
