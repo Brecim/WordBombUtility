@@ -1,4 +1,4 @@
-![Image](Images/WMUGraphic.svg)
+![Image](Images/WMUGraphic.png)
 
 # Word Bomb Utility
 This is a small and portable tool for learning new words for the Roblox game [Word Bomb](https://www.roblox.com/games/2653064683/Word-Bomb) written fully in Java.
@@ -22,7 +22,7 @@ If there are any concerns, please contact me in the Issues tab in this repositor
 ![Image](Images/wholeScrn.png)
 
 ## Known Issues
-*Currently no issues. If there are any, then please feel free to make an issue in this repository.*
+*Currently, no issues. If there are any, then please feel free to make an issue in this repository.*
 
 ## Special Thanks
 Thanks to [OMG](https://www.roblox.com/communities/4585943) for developing the game and providing me with silly word fun.
