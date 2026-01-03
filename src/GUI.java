@@ -52,13 +52,11 @@ public class GUI extends JFrame {
     private void init() {
         checkOS();
 
-        // Ensure the directory actually exists on the hard drive
         File directory = new File(appDataDirectory);
         if (!directory.exists()) {
-            directory.mkdirs(); // This creates the folder "Word Bomb Utility"
+            directory.mkdirs();
         }
 
-        // NOW initialize the File objects using the valid path
         promptFile = new File(appDataDirectory + "savedPrompts.txt");
         wordFile = new File(appDataDirectory + "savedWords.txt");
 
@@ -82,10 +80,8 @@ public class GUI extends JFrame {
         wordLengthBox.addItem("Max");
 
         findBtn.addActionListener(_ -> find(promptField.getText()));
-        // Jiz snima klavesy vcetne Enteru
         promptField.addActionListener(_ -> find(promptField.getText()));
         wordLengthBox.addActionListener(_ -> find(promptField.getText()));
-        // Automaticky bere prednost pri spusteni aplikace
         promptField.requestFocus();
         bookmarkBtn.addActionListener(_ -> bl.saveWord());
     }
@@ -144,7 +140,6 @@ public class GUI extends JFrame {
         ArrayList<String> list = new ArrayList<>();
         checkLength();
         resultPane.setText("");
-        // auto nastaveni promptu
         bookmarkPromptField.setText(prompt);
 
         for (int i = 0; i <= dict.size() - 1; i++) {
@@ -156,7 +151,7 @@ public class GUI extends JFrame {
                 break;
             }
         }
-        // AI formatovani, jupiiiii
+
         StringBuilder htmlContent = new StringBuilder();
         htmlContent.append("<html><body style='font-family: monospace; color: white;'>");
 
