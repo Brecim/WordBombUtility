@@ -152,7 +152,7 @@ public class GUI extends JFrame {
                 list.add(dict.get(i));
                 found++;
             }
-            if (found == 1000) {
+            if (found == 300) {
                 break;
             }
         }
