@@ -10,8 +10,12 @@ This app does not auto-type words, allow copying words in the game or any other 
 
 If there are any concerns, please contact me in the Issues tab in this repository.
 
+## Requirements
+- A modern Java JRE
+_Proper OS packages will be introduced in later versions._
+
 ## OS Support
-All of the listed operating systems are supported, however not all are tested, so your mileage may vary.
+All of the listed operating systems are technically supported, however your mileage may vary.
 Any reports about your experiences in an untested OS are very appreciated. <3
 
 - Windows 10 and above
