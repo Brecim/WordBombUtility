@@ -19,6 +19,8 @@ public class GUI extends JFrame {
     public JButton clearBookmarkBtn;
     public JTextField bookmarkPromptField;
     public JTextField bookmarkWordField;
+    private JScrollPane scrollPaneR;
+    private JScrollPane scrollPaneS;
 
     public ArrayList<String> dict = new ArrayList<>();
     private int length = 1000;
@@ -39,6 +41,8 @@ public class GUI extends JFrame {
         setTitle("Word Bomb Utility");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(1000, 600));
+        setLocationRelativeTo(null);
+
         pack();
 
         loadDict();
@@ -148,7 +152,7 @@ public class GUI extends JFrame {
                 list.add(dict.get(i));
                 found++;
             }
-            if (found == 15) {
+            if (found == 1000) {
                 break;
             }
         }

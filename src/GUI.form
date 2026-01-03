@@ -21,20 +21,6 @@
           <text value="Find"/>
         </properties>
       </component>
-      <component id="8b648" class="javax.swing.JTextPane" binding="resultPane">
-        <constraints>
-          <grid row="4" column="0" row-span="4" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
-        </constraints>
-        <properties>
-          <background color="-14013651"/>
-          <editable value="false"/>
-          <font name="DialogInput"/>
-          <foreground color="-1"/>
-          <text value="Please enter a prompt!"/>
-        </properties>
-      </component>
       <component id="20cf1" class="javax.swing.JComboBox" binding="wordLengthBox">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -204,20 +190,50 @@
           <text value="Search"/>
         </properties>
       </component>
-      <component id="734c9" class="javax.swing.JTextPane" binding="savesPane">
+      <scrollpane id="63f97" binding="scrollPaneR">
         <constraints>
-          <grid row="7" column="2" row-span="1" col-span="2" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
+          <grid row="4" column="0" row-span="4" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-14013651"/>
-          <editable value="false"/>
-          <font name="DialogInput"/>
-          <foreground color="-1"/>
-          <text value="Please enter a prompt!"/>
+          <foreground color="-1708033"/>
+          <horizontalScrollBarPolicy value="31"/>
         </properties>
-      </component>
+        <border type="none"/>
+        <children>
+          <component id="e4182" class="javax.swing.JTextPane" binding="resultPane">
+            <constraints/>
+            <properties>
+              <background color="-14013651"/>
+              <editable value="false"/>
+              <font name="DialogInput"/>
+              <foreground color="-1"/>
+              <text value="Please enter a prompt!"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <scrollpane id="688ac" binding="scrollPaneS">
+        <constraints>
+          <grid row="7" column="2" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14013651"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="9c18a" class="javax.swing.JTextPane" binding="savesPane">
+            <constraints/>
+            <properties>
+              <background color="-14013651"/>
+              <editable value="false"/>
+              <font name="DialogInput"/>
+              <foreground color="-1"/>
+              <text value="Please enter a prompt!"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
     </children>
   </grid>
 </form>
