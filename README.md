@@ -3,7 +3,6 @@
 # Word Bomb Utility
 This is a small and portable tool for learning new words for the Roblox game [Word Bomb](https://www.roblox.com/games/2653064683/Word-Bomb) written fully in Java.
 
----
 ## Disclaimer
 
 This is not cheating software and only meant as an educational passion project made for fun and curiosity.
@@ -13,12 +12,19 @@ If there are any concerns, please contact me in the Issues tab in this repositor
 
 ## Features
 - **Prompt searching with highlighting**
+
 ![Image](Images/searchScrn.png)
+
 - **Word length filtering**
+
 ![Image](Images/lengthScrn.png)
+
 - **Bookmarks**
+
 ![Image](Images/bookmarkScrn.png)
+
 - **Dark mode GUI**
+
 ![Image](Images/wholeScrn.png)
 
 ## Known Issues
