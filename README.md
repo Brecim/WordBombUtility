@@ -11,8 +11,10 @@ This app does not auto-type words, allow copying words in the game or any other 
 If there are any concerns, please contact me in the Issues tab in this repository.
 
 ## OS Support
+All of the listed operating systems are supported, however not all are tested, so your mileage may vary.
+Any reports about your experiences in an untested OS are very appreciated. <3
 
-- Windows 10, 11
+- Windows 10 and above
   - [X] _Tested under Windows 10_
 - MacOS
   - [ ] Untested
