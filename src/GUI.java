@@ -167,7 +167,5 @@ public class GUI extends JFrame {
         resultPane.setText(htmlContent.toString());
     }
 
-    void main() {
-        setVisible(true);
-    }
+
 }
