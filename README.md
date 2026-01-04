@@ -31,7 +31,7 @@ If there are any concerns, please contact me in the Issues tab in this repositor
 
 _Proper OS packages will be introduced in later versions._
 
-## OS Support
+### OS Support
 All of the listed operating systems are technically supported, however your mileage may vary.
 Any reports about your experiences in an untested OS are very appreciated. <3
 
