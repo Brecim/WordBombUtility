@@ -4,11 +4,27 @@
 This is a small and portable tool for learning new words for the Roblox game [Word Bomb](https://www.roblox.com/games/2653064683/Word-Bomb) written fully in Java.
 
 ## Disclaimer
-
 This is not cheating software and only meant as an educational passion project made for fun and curiosity.
 This app does not auto-type words, allow copying words in the game or any other forms of game exploitation.
 
 If there are any concerns, please contact me in the Issues tab in this repository.
+
+## Features
+- **Prompt Searching With Highlighting**
+
+![Image](Images/searchScrn.png)
+
+- **Word Length Filtering**
+
+![Image](Images/lengthScrn.png)
+
+- **Bookmarks**
+
+![Image](Images/bookmarkScrn.png)
+
+- **Dark Mode GUI**
+
+![Image](Images/wholeScrn.png)
 
 ## Requirements
 - A modern Java JRE (I recommend the latest version of [Adoptium JRE](https://adoptium.net/temurin/releases) for your platform.)
@@ -29,22 +45,6 @@ Any reports about your experiences in an untested OS are very appreciated. <3
 ## Downloads
 Head to the [releases page](https://github.com/Brecim/WordBombUtility/releases/tag/stable) and download the .jar binary file. A modern Java JRE is required to make this application work.
 
-## Features
-- **Prompt Searching With Highlighting**
-
-![Image](Images/searchScrn.png)
-
-- **Word Length Filtering**
-
-![Image](Images/lengthScrn.png)
-
-- **Bookmarks**
-
-![Image](Images/bookmarkScrn.png)
-
-- **Dark Mode GUI**
-
-![Image](Images/wholeScrn.png)
 
 ## Known Issues
 *Currently, no issues. If there are any, then please feel free to make an issue in this repository. Feature requests are also welcome, but there is no guarantee of addition.*
