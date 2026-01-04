@@ -11,7 +11,7 @@ This app does not auto-type words, allow copying words in the game or any other 
 If there are any concerns, please contact me in the Issues tab in this repository.
 
 ## Requirements
-- A modern Java JRE
+- A modern Java JRE (I recommend the latest version of [Adoptium JRE](https://adoptium.net/temurin/releases) for your platform.)
 
 _Proper OS packages will be introduced in later versions._
 
