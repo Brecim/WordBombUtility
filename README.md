@@ -26,6 +26,9 @@ Any reports about your experiences in an untested OS are very appreciated. <3
 - Linux
   - [ ] Untested
 
+## Downloads
+Head to the [releases page](https://github.com/Brecim/WordBombUtility/releases/tag/stable) and download the .jar binary file. A modern Java JRE is required to make this application work.
+
 ## Features
 - **Prompt Searching With Highlighting**
 
