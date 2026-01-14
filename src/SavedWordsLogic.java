@@ -1,43 +1,50 @@
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class SavedWordsLogic {
 
-    private final ArrayList<String> promptList = new ArrayList<>();
     public final ArrayList<String> wordList = new ArrayList<>();
 
     private final GUI menu;
 
     public SavedWordsLogic(GUI menu) {
         this.menu = menu;
-        menu.searchSavedWordsBtn.addActionListener(_ -> search((String) menu.promptBox.getSelectedItem()));
-        menu.promptBox.addActionListener(_ -> search((String) menu.promptBox.getSelectedItem()));
+
+        menu.searchSavedWordsBtn.addActionListener(_ -> search(menu.bookmarkSearchField.getText()));
+        menu.bookmarkSearchField.addActionListener(_ -> search(menu.bookmarkSearchField.getText()));
+
+        menu.bookmarkSearchField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                search(menu.bookmarkSearchField.getText());
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                search(menu.bookmarkSearchField.getText());
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                search(menu.bookmarkSearchField.getText());
+            }
+        });
     }
 
     public void loadList() {
         try {
-            menu.promptBox.removeAllItems();
-            Scanner sp = new Scanner(new FileReader(menu.promptFile));
             Scanner sw = new Scanner(new FileReader(menu.wordFile));
-            sp.useDelimiter(";");
             sw.useDelimiter(";");
-            while (sp.hasNext() && sw.hasNext()) {
-                promptList.add(sp.next());
+            while (sw.hasNext()) {
                 wordList.add(sw.next());
             }
-            sp.close();
             sw.close();
-
-            ArrayList<String> uniquePrompts = new ArrayList<>();
-
-            for (String prompt : promptList) {
-                if (!uniquePrompts.contains(prompt)) {
-                    uniquePrompts.add(prompt);
-                    menu.promptBox.addItem(prompt);
-                }
-            }
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(menu, "An error has occured: " + e);
         }
@@ -49,22 +56,17 @@ public class SavedWordsLogic {
         ArrayList<String> foundWords = new ArrayList<>();
 
         try {
-            Scanner sp = new Scanner(menu.promptFile);
             Scanner sw = new Scanner(menu.wordFile);
-            sp.useDelimiter(";");
             sw.useDelimiter(";");
 
-            while (sp.hasNext() && sw.hasNext()) {
-                String tempPrompt = sp.next();
-                if (sw.hasNext()) {
-                    String tempWord = sw.next();
-                    if (tempPrompt.equals(prompt)) {
-                        foundWords.add(tempWord);
-                    }
+            while (sw.hasNext()) {
+                String tempWord = sw.next();
+                if (tempWord.contains(prompt)) {
+                    foundWords.add(tempWord);
                 }
             }
-            sp.close();
             sw.close();
+            foundWords.sort(Comparator.comparingInt(String::length).reversed().thenComparing(Comparator.naturalOrder()));
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(menu, "An error has occured: " + e);
         }
@@ -82,5 +84,6 @@ public class SavedWordsLogic {
 
         menu.savesPane.setContentType("text/html");
         menu.savesPane.setText(htmlContent.toString());
+        menu.scrollPaneS.getViewport().setViewPosition(new Point(0,0));
     }
 }

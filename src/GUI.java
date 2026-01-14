@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -13,14 +15,14 @@ public class GUI extends JFrame {
     private JTextPane resultPane;
     private JComboBox wordLengthBox;
     private JButton bookmarkBtn;
-    public JComboBox promptBox;
     public JButton searchSavedWordsBtn;
     public JTextPane savesPane;
     public JButton clearBookmarkBtn;
-    public JTextField bookmarkPromptField;
     public JTextField bookmarkWordField;
+    public JTextField bookmarkSearchField;
+
     private JScrollPane scrollPaneR;
-    private JScrollPane scrollPaneS;
+    public JScrollPane scrollPaneS;
 
     public ArrayList<String> dict = new ArrayList<>();
     private int length = 1000;
@@ -30,7 +32,6 @@ public class GUI extends JFrame {
     // Reads the name of the operating system
     public static final String osName = (System.getProperty("os.name")).toUpperCase();
 
-    public File promptFile;
     public File wordFile;
 
     public final BookmarkLogic bl = new BookmarkLogic(this);
@@ -57,13 +58,9 @@ public class GUI extends JFrame {
             directory.mkdirs();
         }
 
-        promptFile = new File(appDataDirectory + "savedPrompts.txt");
         wordFile = new File(appDataDirectory + "savedWords.txt");
 
         try {
-            if (!promptFile.exists()) {
-                promptFile.createNewFile();
-            }
             if (!wordFile.exists()) {
                 wordFile.createNewFile();
             }
@@ -82,8 +79,26 @@ public class GUI extends JFrame {
         findBtn.addActionListener(_ -> find(promptField.getText()));
         promptField.addActionListener(_ -> find(promptField.getText()));
         wordLengthBox.addActionListener(_ -> find(promptField.getText()));
-        promptField.requestFocus();
         bookmarkBtn.addActionListener(_ -> bl.saveWord());
+
+        // Add the DocumentListener to trigger search on every keystroke
+        promptField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                find(promptField.getText());
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                find(promptField.getText());
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                find(promptField.getText());
+            }
+        });
+        promptField.requestFocus();
     }
 
     public void checkOS() {
@@ -91,7 +106,6 @@ public class GUI extends JFrame {
         if (osName.contains("WIN")) {
             appDataDirectory = System.getenv("AppData");
             appDataDirectory += "\\" + "Word Bomb Utility" + "\\";
-            System.out.println(appDataDirectory);
         } else {
             appDataDirectory = System.getProperty("user.home");
             if (osName.contains("MAC")) {
@@ -140,7 +154,6 @@ public class GUI extends JFrame {
         ArrayList<String> list = new ArrayList<>();
         checkLength();
         resultPane.setText("");
-        bookmarkPromptField.setText(prompt);
 
         for (int i = 0; i <= dict.size() - 1; i++) {
             if (dict.get(i).contains(prompt) && dict.get(i).length() <= length) {
@@ -165,7 +178,6 @@ public class GUI extends JFrame {
 
         resultPane.setContentType("text/html");
         resultPane.setText(htmlContent.toString());
+        scrollPaneR.getViewport().setViewPosition(new Point(0,0));
     }
-
-
 }
