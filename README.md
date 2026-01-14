@@ -52,7 +52,7 @@ Head to the [releases page](https://github.com/Brecim/WordBombUtility/releases/t
 ## Special Thanks
 Thanks to [OMG](https://www.roblox.com/communities/4585943) for developing the game and providing us with silly word fun.
 
-I would also like to thank [artzified](https://github.com/artzified) for compiling [a nearly complete dictionary for this game](https://github.com/Artzified/WordBombDictionary) and [wobtrain.com](https://wobtrain.com) for filling in the last gaps in the word list and allowing this tool to be possible.
+I would also like to thank [artzified](https://github.com/artzified) for compiling [a nearly complete dictionary for this game](https://github.com/Artzified/WordBombDictionary) and [wobtrain.com](https://wobtrain.com) for filling in the last gaps in the word list and both allowing this tool to be possible.
 
 And finally, I want to thank **you** for checking this app out <3
 
