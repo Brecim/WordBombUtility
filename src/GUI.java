@@ -11,11 +11,11 @@ import java.util.Scanner;
 public class GUI extends JFrame {
     private JPanel mainPn;
     public JTextField promptField;
-    private JButton findBtn;
+    private JButton findBtn = new JButton();
     private JTextPane resultPane;
     private JComboBox wordLengthBox;
     private JButton bookmarkBtn;
-    public JButton searchSavedWordsBtn;
+    public JButton searchSavedWordsBtn = new JButton();
     public JTextPane savesPane;
     public JButton clearBookmarkBtn;
     public JTextField bookmarkWordField;
@@ -178,6 +178,12 @@ public class GUI extends JFrame {
 
         resultPane.setContentType("text/html");
         resultPane.setText(htmlContent.toString());
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    resultPane.setCaretPosition(0);
+                }
+        });
         scrollPaneR.getViewport().setViewPosition(new Point(0,0));
     }
 }
