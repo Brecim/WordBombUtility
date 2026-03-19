@@ -154,16 +154,28 @@ public class GUI extends JFrame {
         int found = 0;
         ArrayList<String> list = new ArrayList<>();
         checkLength();
+        paneUp();
         resultPane.setText("");
 
-        for (int i = 0; i <= dict.size() - 1; i++) {
-            if (dict.get(i).contains(prompt) && dict.get(i).length() <= length) {
-                list.add(dict.get(i));
-                found++;
+        int cutoffIndex = findCutoffIndex(dict, length);
+
+//        for (int i = 0; i <= dict.size() - 1; i++) {
+//            if (dict.get(i).length() <= length && dict.get(i).contains(prompt)) {
+//                list.add(dict.get(i));
+//                found++;
+//            }
+//            if (found == 300) {
+//                break;
+//            }
+//        }
+
+            for (int i = 0; i < cutoffIndex; i++) {
+                String word = dict.get(i);
+                if (word.contains(prompt)) {
+                    list.add(word);
+                }
             }
-            if (found == 300) {
-                break;
-            }
+            return results;
         }
 
         StringBuilder htmlContent = new StringBuilder();
@@ -179,12 +191,30 @@ public class GUI extends JFrame {
 
         resultPane.setContentType("text/html");
         resultPane.setText(htmlContent.toString());
+        scrollPaneR.getViewport().setViewPosition(new Point(0,0));
+    }
+
+    private int findCutoffIndex(ArrayList list, int maxLength) {
+        int low = 0;
+        int high = dict.size();
+
+        while (low < high) {
+            int mid = (low + high) / 2;
+            if (dict.get(mid).length() <= maxLength) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+        return low; // This index is the first element that is > maxLength
+    }
+
+    private void paneUp() {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 resultPane.setCaretPosition(0);
             }
         });
-        scrollPaneR.getViewport().setViewPosition(new Point(0,0));
     }
 }
