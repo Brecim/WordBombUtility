@@ -75,6 +75,7 @@ public class GUI extends JFrame {
         wordLengthBox.addItem(15);
         wordLengthBox.addItem(20);
         wordLengthBox.addItem("Max");
+        wordLengthBox.setSelectedItem("Max");
 
         findBtn.addActionListener(_ -> find(promptField.getText()));
         promptField.addActionListener(_ -> find(promptField.getText()));
@@ -179,10 +180,10 @@ public class GUI extends JFrame {
         resultPane.setContentType("text/html");
         resultPane.setText(htmlContent.toString());
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    resultPane.setCaretPosition(0);
-                }
+            @Override
+            public void run() {
+                resultPane.setCaretPosition(0);
+            }
         });
         scrollPaneR.getViewport().setViewPosition(new Point(0,0));
     }
