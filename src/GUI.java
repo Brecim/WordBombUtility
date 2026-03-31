@@ -13,7 +13,6 @@ public class GUI extends JFrame {
     public JTextField promptField;
     private JButton findBtn = new JButton();
     private JTextPane resultPane;
-    private JComboBox wordLengthBox;
     private JButton bookmarkBtn;
     public JButton searchSavedWordsBtn = new JButton();
     public JTextPane savesPane;
@@ -23,6 +22,7 @@ public class GUI extends JFrame {
 
     private JScrollPane scrollPaneR;
     public JScrollPane scrollPaneS;
+    private JSlider wordLengthSlider;
 
     public ArrayList<String> dict = new ArrayList<>();
     private int length = 1000;
@@ -72,15 +72,10 @@ public class GUI extends JFrame {
 
         swl.loadList();
 
-        wordLengthBox.addItem(10);
-        wordLengthBox.addItem(15);
-        wordLengthBox.addItem(20);
-        wordLengthBox.addItem("Max");
-        wordLengthBox.setSelectedItem("Max");
 
         findBtn.addActionListener(_ -> find(promptField.getText()));
         promptField.addActionListener(_ -> find(promptField.getText()));
-        wordLengthBox.addActionListener(_ -> find(promptField.getText()));
+        wordLengthSlider.addChangeListener(_ -> find(promptField.getText()));
         bookmarkBtn.addActionListener(_ -> bl.saveWord());
 
         // Add the DocumentListener to trigger search on every keystroke
@@ -119,15 +114,7 @@ public class GUI extends JFrame {
     }
 
     private void checkLength() {
-        String selectedLength = Objects.requireNonNull(wordLengthBox.getSelectedItem()).toString();
-        switch (selectedLength) {
-            case "10" -> length = 10;
-            case "15" -> length = 15;
-            case "20" -> length = 20;
-            case "Max" -> length = 1000;
-            case null -> length = 1000;
-            default -> throw new IllegalStateException("Unexpected value: " + selectedLength);
-        }
+        length = wordLengthSlider.getValue();
     }
 
     private void loadDict() {
@@ -164,7 +151,7 @@ public class GUI extends JFrame {
                 list.add(dict.get(i));
                 found++;
             }
-            if (found == 300) {
+            if (found == 100) {
                 break;
             }
         }

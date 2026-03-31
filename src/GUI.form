@@ -11,17 +11,6 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="20cf1" class="javax.swing.JComboBox" binding="wordLengthBox">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <background color="-14013651"/>
-          <foreground color="-1"/>
-        </properties>
-      </component>
       <component id="78d65" class="javax.swing.JLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
@@ -192,6 +181,27 @@
           <background color="-14013651"/>
           <foreground color="-1"/>
           <text value="Clear Bookmarks"/>
+        </properties>
+      </component>
+      <component id="9ba45" class="javax.swing.JSlider" binding="wordLengthSlider">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-13684686"/>
+          <extent value="0"/>
+          <foreground color="-1"/>
+          <inverted value="false"/>
+          <majorTickSpacing value="2"/>
+          <maximum value="34"/>
+          <minimum value="2"/>
+          <minorTickSpacing value="1"/>
+          <paintLabels value="true"/>
+          <paintTicks value="true"/>
+          <paintTrack value="true"/>
+          <snapToTicks value="true"/>
+          <value value="34"/>
+          <valueIsAdjusting value="true"/>
         </properties>
       </component>
     </children>
