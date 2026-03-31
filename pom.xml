@@ -8,6 +8,7 @@
     <artifactId>word-bomb-utility</artifactId>
     <version>1.1.0</version>
     <name>Word Bomb Utility</name>
+
     <build>
         <plugins>
             <plugin>
@@ -71,6 +72,8 @@
             </resource>
         </resources>
     </build>
+
+
 
 </project>
 

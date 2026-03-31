@@ -3,15 +3,12 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class GUI extends JFrame {
     private JPanel mainPn;
     public JTextField promptField;
-    private JButton findBtn = new JButton();
+    private final JButton findBtn = new JButton();
     private JTextPane resultPane;
     private JButton bookmarkBtn;
     public JButton searchSavedWordsBtn = new JButton();
@@ -66,12 +63,11 @@ public class GUI extends JFrame {
                 wordFile.createNewFile();
             }
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "An error has occured: " + e);
+            JOptionPane.showMessageDialog(this, "An error has occurred: " + e);
             System.exit(69);
         }
 
         swl.loadList();
-
 
         findBtn.addActionListener(_ -> find(promptField.getText()));
         promptField.addActionListener(_ -> find(promptField.getText()));
@@ -138,13 +134,12 @@ public class GUI extends JFrame {
         dict.sort(Comparator.comparingInt(String::length).reversed().thenComparing(Comparator.naturalOrder()));
     }
 
-        private void find(String prompt) {
+    private void find(String prompt) {
         int found = 0;
         ArrayList<String> list = new ArrayList<>();
         checkLength();
         paneUp();
         resultPane.setText("");
-
 
         for (int i = 0; i <= dict.size() - 1; i++) {
             if (dict.get(i).length() <= length && dict.get(i).contains(prompt)) {
@@ -155,9 +150,6 @@ public class GUI extends JFrame {
                 break;
             }
         }
-
-
-
 
         StringBuilder htmlContent = new StringBuilder();
         htmlContent.append("<html><body style='font-family: monospace; color: white;'>");
@@ -176,11 +168,6 @@ public class GUI extends JFrame {
     }
 
     private void paneUp() {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                resultPane.setCaretPosition(0);
-            }
-        });
+        SwingUtilities.invokeLater(() -> resultPane.setCaretPosition(0));
     }
 }
