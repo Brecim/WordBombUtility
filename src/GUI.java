@@ -42,6 +42,7 @@ public class GUI extends JFrame {
         setTitle("Word Bomb Utility");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(1000, 600));
+        setVisible(true);
         pack();
 
         setLocationRelativeTo(null);
@@ -157,26 +158,19 @@ public class GUI extends JFrame {
         paneUp();
         resultPane.setText("");
 
-        int cutoffIndex = findCutoffIndex(dict, length);
 
-//        for (int i = 0; i <= dict.size() - 1; i++) {
-//            if (dict.get(i).length() <= length && dict.get(i).contains(prompt)) {
-//                list.add(dict.get(i));
-//                found++;
-//            }
-//            if (found == 300) {
-//                break;
-//            }
-//        }
-
-            for (int i = 0; i < cutoffIndex; i++) {
-                String word = dict.get(i);
-                if (word.contains(prompt)) {
-                    list.add(word);
-                }
+        for (int i = 0; i <= dict.size() - 1; i++) {
+            if (dict.get(i).length() <= length && dict.get(i).contains(prompt)) {
+                list.add(dict.get(i));
+                found++;
             }
-            return results;
+            if (found == 300) {
+                break;
+            }
         }
+
+
+
 
         StringBuilder htmlContent = new StringBuilder();
         htmlContent.append("<html><body style='font-family: monospace; color: white;'>");
@@ -192,21 +186,6 @@ public class GUI extends JFrame {
         resultPane.setContentType("text/html");
         resultPane.setText(htmlContent.toString());
         scrollPaneR.getViewport().setViewPosition(new Point(0,0));
-    }
-
-    private int findCutoffIndex(ArrayList list, int maxLength) {
-        int low = 0;
-        int high = dict.size();
-
-        while (low < high) {
-            int mid = (low + high) / 2;
-            if (dict.get(mid).length() <= maxLength) {
-                low = mid + 1;
-            } else {
-                high = mid;
-            }
-        }
-        return low; // This index is the first element that is > maxLength
     }
 
     private void paneUp() {
