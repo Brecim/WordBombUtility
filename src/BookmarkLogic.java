@@ -10,7 +10,7 @@ public class BookmarkLogic {
         this.menu = menu;
 
         menu.bookmarkWordField.addActionListener(_ -> saveWord());
-        menu.clearBookmarkBtn.addActionListener(_ -> clearBookmarks());
+        menu.clearBookmarkBtn.addActionListener(_ -> openConfirmPrompt());
     }
 
     public void saveWord() {
@@ -43,17 +43,22 @@ public class BookmarkLogic {
         }
     }
 
-    public void clearBookmarks() {
-        try {
-            PrintWriter pws = new PrintWriter(menu.wordFile, StandardCharsets.UTF_8);
-            pws.write("");
-            pws.close();
-            menu.savesPane.setText("Please save a word first!");
-            JOptionPane.showMessageDialog(menu, "Bookmarks have been cleared.");
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(menu, "An error has occured: " + e);
-            System.exit(69);
-        }
-
+    private void openConfirmPrompt() {
+        DeleteConfirmPrompt dcp = new DeleteConfirmPrompt(menu);
+        dcp.setVisible(true);
     }
+
+//    public void clearBookmarks() {
+//        try {
+//            PrintWriter pws = new PrintWriter(menu.wordFile, StandardCharsets.UTF_8);
+//            pws.write("");
+//            pws.close();
+//            menu.savesPane.setText("Please save a word first!");
+//            JOptionPane.showMessageDialog(menu, "Bookmarks have been cleared.");
+//        } catch (IOException e) {
+//            JOptionPane.showMessageDialog(menu, "An error has occured: " + e);
+//            System.exit(69);
+//        }
+//
+//    }
 }
