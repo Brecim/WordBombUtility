@@ -43,9 +43,14 @@ public class BookmarkLogic {
         }
     }
 
+    public int DCPopens = 0;
+
     private void openConfirmPrompt() {
-        DeleteConfirmPrompt dcp = new DeleteConfirmPrompt(menu);
-        dcp.setVisible(true);
+        if (DCPopens == 0) {
+            DeleteConfirmPrompt dcp = new DeleteConfirmPrompt(menu);
+            dcp.setVisible(true);
+            DCPopens = 1;
+        }
     }
 
 //    public void clearBookmarks() {

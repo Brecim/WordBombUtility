@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
 public class DeleteConfirmPrompt extends JFrame {
+
     private JPanel mainPn;
     private JButton cancelBtn;
     private JButton confirmBtn;
@@ -18,11 +19,16 @@ public class DeleteConfirmPrompt extends JFrame {
         setTitle("Warning");
         setPreferredSize(new Dimension(500, 150));
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setLocationRelativeTo(menu);
+        setLocationRelativeTo(null);
         pack();
 
-        cancelBtn.addActionListener(_ -> dispose());
+        cancelBtn.addActionListener(_ -> closePrompt());
         confirmBtn.addActionListener(_ -> deleteBookmarks());
+    }
+
+    public void closePrompt() {
+        menu.bl.DCPopens = 0;
+        dispose();
     }
 
     private void deleteBookmarks() {
